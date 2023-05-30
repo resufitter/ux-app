@@ -1,0 +1,23 @@
+{
+  "private": true,
+  "author": "qooiprww <liuh81@mcmaster.ca>",
+  "scripts": {
+    "dev": "umi dev",
+    "build": "umi build",
+    "postinstall": "umi setup",
+    "setup": "umi setup",
+    "start": "npm run dev"
+  },
+  "dependencies": {
+    "@ant-design/pro-layout": "^7.13.5",
+    "antd": "^5.5.1",
+    "axios": "^1.4.0",
+    "umi": "^4.0.69"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.7",
+    "@types/react-dom": "^18.2.4",
+    "@umijs/plugins": "^4.0.69",
+    "typescript": "^5.0.4"
+  }
+}
