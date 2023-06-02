@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, Button, Box, Typography, Chip } from "@mui/material";
+import { TextField, Button, Box } from "@mui/material";
 import { Add } from '@mui/icons-material';
 import PropTypes from "prop-types";
 import withStyles from "@mui/styles/withStyles";
@@ -21,10 +21,7 @@ const styles = (theme) => ({
 
 function WorkExperienceSection(props) {
     const {
-        pushMessageToSnackbar,
         classes,
-        style,
-        theme,
         jobs,
         setJobs
     } = props;

@@ -48,7 +48,7 @@ function Main(props) {
   const handleNext = () => {
     const newActiveStep = activeStep + 1;
     setActiveStep(newActiveStep);
-    if (newActiveStep == steps.length)
+    if (newActiveStep === steps.length)
       return;
     history.push(steps[newActiveStep].link);
   };

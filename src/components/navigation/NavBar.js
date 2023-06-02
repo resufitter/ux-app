@@ -1,5 +1,4 @@
 import React, { Fragment } from "react";
-import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import {
@@ -97,7 +96,6 @@ function NavBar(props) {
     handleRestart,
     activeStep,
     steps,
-    setActiveStep
   } = props;
   const isWidthUpSm = useMediaQuery(theme.breakpoints.up("sm"));
 

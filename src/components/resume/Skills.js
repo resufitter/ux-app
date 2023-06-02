@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, Button, Box, Typography, Chip } from "@mui/material";
+import { TextField, Button, Box, Chip } from "@mui/material";
 import { Add } from '@mui/icons-material';
 import PropTypes from "prop-types";
 import withStyles from "@mui/styles/withStyles";
@@ -13,10 +13,7 @@ const styles = (theme) => ({
 
 function SkillsSection(props) {
     const {
-        pushMessageToSnackbar,
         classes,
-        style,
-        theme,
         skills,
         setSkills,
         newSkill,

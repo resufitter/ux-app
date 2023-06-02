@@ -1,6 +1,5 @@
 import React from 'react';
-import { TextField, Button, Box, Typography, Chip } from "@mui/material";
-import { Add } from '@mui/icons-material';
+import { TextField, Box } from "@mui/material";
 import PropTypes from "prop-types";
 import withStyles from "@mui/styles/withStyles";
 
@@ -13,10 +12,7 @@ const styles = (theme) => ({
 
 function EditJobDescription(props) {
     const {
-        pushMessageToSnackbar,
         classes,
-        style,
-        theme,
     } = props;
 
     const [jobDescription, setJobDescription] = React.useState('');

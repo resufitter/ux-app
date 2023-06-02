@@ -1,16 +1,11 @@
-import React, { memo, useCallback, useState, useEffect, Fragment } from "react";
+import React from "react";
 import PropTypes from "prop-types";
 import {
     Typography,
-    Chip,
     Box,
     Divider
 } from "@mui/material";
-import classNames from "classnames";
-import { Inbox, Attachment } from '@mui/icons-material';
 import withStyles from "@mui/styles/withStyles";
-import { useDropzone } from "react-dropzone";
-import ColoredButton from "../ColoredButton";
 import BasicInfo from "./BasicInfo";
 import Skills from "./Skills";
 import WorkExperience from "./WorkExperience";
@@ -53,8 +48,6 @@ function EditResume(props) {
     const {
         pushMessageToSnackbar,
         classes,
-        style,
-        theme
     } = props;
 
     const [name, setName] = React.useState('');

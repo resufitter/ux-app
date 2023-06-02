@@ -48,13 +48,10 @@ const styles = (theme) => ({
 function ProgressStepper(props) {
   const {
     classes,
-    theme,
     handleNext,
     handleBack,
-    handleRestart,
     activeStep,
     steps,
-    setActiveStep,
     children,
   } = props;
 

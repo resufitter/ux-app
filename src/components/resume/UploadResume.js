@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState, useEffect, Fragment } from "react";
+import React, { useCallback, useState, Fragment } from "react";
 import PropTypes from "prop-types";
 import {
     Typography,
