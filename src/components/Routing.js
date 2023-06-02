@@ -53,17 +53,17 @@ function Routing(props) {
     <div className={classes.wrapper}>
       <Switch>
         <PropsRoute
-          path="/upload-resume"
+          path="/ux-app/upload-resume"
           component={UploadResume}
           pushMessageToSnackbar={pushMessageToSnackbar}
         />
         <PropsRoute
-          path="/edit"
+          path="/ux-app/edit"
           component={EditResume}
           pushMessageToSnackbar={pushMessageToSnackbar}
         />
         <PropsRoute
-          path="/job-description"
+          path="/ux-app/job-description"
           component={EditJobDescription}
           pushMessageToSnackbar={pushMessageToSnackbar}
         />

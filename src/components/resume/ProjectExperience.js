@@ -44,10 +44,9 @@ function ProjectExperienceSection(props) {
     return (
         <Box component="form">
             {projects.map((project, index) => (
-                <Box component="form"
-                    sx={{
-                        '& > :not(style)': { m: "1%" },
-                    }}
+                <Box sx={{
+                    '& > :not(style)': { m: "1%" },
+                }}
                     key={index}>
 
                     <TextField
@@ -102,7 +101,7 @@ ProjectExperienceSection.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     style: PropTypes.object,
-    projects: PropTypes.string,
+    projects: PropTypes.arrayOf(PropTypes.object),
     setProjects: PropTypes.func,
 };
 

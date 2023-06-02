@@ -23,19 +23,19 @@ const styles = (theme) => ({
 const steps = [
   {
     name: 'Upload Your Resume',
-    link: "/upload-resume"
+    link: "/ux-app/upload-resume"
   },
   {
     name: 'Preview Your Resume',
-    link: "/edit"
+    link: "/ux-app/edit"
   },
   {
     name: 'Copy the Job Description',
-    link: "/job-description"
+    link: "/ux-app/job-description"
   },
   {
     name: 'Preview Final Resume',
-    link: "/edit"
+    link: "/ux-app/edit"
   }
 ];
 

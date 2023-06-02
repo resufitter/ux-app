@@ -45,7 +45,7 @@ function WorkExperienceSection(props) {
     return (
         <Box component="form">
             {jobs.map((job, index) => (
-                <Box component="form"
+                <Box
                     sx={{
                         '& > :not(style)': { m: "1%" },
                     }}
@@ -117,7 +117,7 @@ WorkExperienceSection.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     style: PropTypes.object,
-    jobs: PropTypes.object,
+    jobs: PropTypes.arrayOf(PropTypes.object),
     setJobs: PropTypes.func,
 };
 

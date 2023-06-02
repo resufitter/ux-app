@@ -17,8 +17,9 @@ function App() {
           <Pace color={theme.palette.primary.light} />
           <Suspense fallback={<Fragment />}>
             <Switch>
-              <Route path="/">
-                <Redirect from="/" to="upload-resume" />
+              <Route path="/ux-app">
+                <Redirect from="/" to="/ux-app/upload-resume" />
+                <Redirect from="/ux-app" to="/ux-app/upload-resume" />
                 <Component />
               </Route>
             </Switch>
