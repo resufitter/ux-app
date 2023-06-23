@@ -186,7 +186,7 @@ function UploadResume(props) {
     });
 
     return (
-        <Box {...getRootProps()} height="100%">
+        <Box {...getRootProps()} height="100%" className={classes.wrapper}>
             <input {...getInputProps()} />
 
             <ColoredButton

@@ -3,9 +3,11 @@ import { createTheme, responsiveFontSizes, adaptV4Theme } from "@mui/material";
 // colors
 const primary = "#1890FF";
 const secondary = "#4829B2";
-const black = "#343a40";
+const black = "#333333";
+const grey = "#4F4F4F";
 const darkBlack = "rgb(36, 40, 44)";
 const background = "#f2f4f5";
+const backgroundDark = "#f5f3f2";
 const backgroundLight = "#ffffff";
 const warningLight = "rgba(253, 200, 69, .3)";
 const warningMain = "rgba(253, 200, 69, .5)";
@@ -31,7 +33,8 @@ const theme = createTheme(adaptV4Theme({
     secondary: { main: secondary },
     common: {
       black,
-      darkBlack
+      darkBlack,
+      grey
     },
     warning: {
       light: warningLight,
@@ -44,6 +47,7 @@ const theme = createTheme(adaptV4Theme({
     tonalOffset: 0.2,
     background: {
       default: background,
+      dark: backgroundDark,
       light: backgroundLight
     },
     spacing
@@ -85,8 +89,7 @@ const theme = createTheme(adaptV4Theme({
     },
     MuiDivider: {
       root: {
-        backgroundColor: borderColor,
-        height: borderWidth
+        backgroundColor: borderColor
       }
     },
     MuiPrivateNotchedOutline: {

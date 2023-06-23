@@ -1,12 +1,20 @@
-import React from 'react';
-import { TextField, Box } from "@mui/material";
+import React from "react";
 import PropTypes from "prop-types";
+import {
+    Typography,
+    Box,
+    Paper
+} from "@mui/material";
 import withStyles from "@mui/styles/withStyles";
 
+
 const styles = (theme) => ({
-    textFieldMultiLine: {
-        background: "#FFFFFF",
-        width: "98%"
+    pageTitle: {
+        fontFamily: 'Roboto',
+        fontWeight: 700,
+        fontSize: 32,
+        color: theme.palette.common.black,
+        marginLeft: "1%"
     },
     wrapper: {
         margin: theme.spacing(1),
@@ -42,36 +50,33 @@ const styles = (theme) => ({
     },
 });
 
-function EditJobDescription(props) {
+function PreviewResume(props) {
     const {
         classes,
     } = props;
 
-    const [jobDescription, setJobDescription] = React.useState('');
-
     return (
-        <Box component="form" className={classes.wrapper}
-            sx={{
-                '& > :not(style)': { m: "1%" },
-            }}>
-            <TextField
-                label="Job Description"
-                value={jobDescription}
-                onChange={(e) => setJobDescription(e.target.value)}
-                multiline
-                rows={50}
-                variant="outlined"
-                className={classes.textFieldMultiLine}
-            />
+        <Box className={classes.wrapper}>
+            <Box display="flex" alignItems="center" sx={{ justifyContent: 'space-around' }}>
+                <Typography className={classes.pageTitle}>Congrats! Here is your final resume</Typography>
+            </Box>
+            <Box display="flex" alignItems="center" sx={{ justifyContent: 'space-around' }}>
+                <Paper elevation={3} sx={{
+                    width: 850,
+                    height: 1100,
+                    marginTop: 10,
+                }} />
+            </Box>
+
         </Box>
     );
-};
+}
 
-EditJobDescription.propTypes = {
+PreviewResume.propTypes = {
     pushMessageToSnackbar: PropTypes.func,
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     style: PropTypes.object,
 };
 
-export default withStyles(styles, { withTheme: true })(EditJobDescription);
+export default withStyles(styles, { withTheme: true })(PreviewResume);

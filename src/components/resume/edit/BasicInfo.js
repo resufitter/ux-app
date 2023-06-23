@@ -20,8 +20,8 @@ function BasicInfoSection(props) {
         setEmail,
         address,
         setAddress,
-        portfolioLink,
-        setPortfolioLink
+        portofolioLink,
+        setPortofolioLink
     } = props;
 
     return (
@@ -58,9 +58,9 @@ function BasicInfoSection(props) {
                 className={classes.textField}
             />
             <TextField
-                label="Portfolio Link"
-                value={portfolioLink}
-                onChange={(e) => setPortfolioLink(e.target.value)}
+                label="Portofolio Link"
+                value={portofolioLink}
+                onChange={(e) => setPortofolioLink(e.target.value)}
                 variant="outlined"
                 className={classes.textField}
             />
@@ -81,8 +81,8 @@ BasicInfoSection.propTypes = {
     setEmail: PropTypes.func,
     address: PropTypes.string,
     setAddress: PropTypes.func,
-    portfolioLink: PropTypes.string,
-    setPortfolioLink: PropTypes.func,
+    portofolioLink: PropTypes.string,
+    setPortofolioLink: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(BasicInfoSection);

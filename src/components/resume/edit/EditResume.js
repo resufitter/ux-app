@@ -42,6 +42,38 @@ const styles = (theme) => ({
         color: theme.palette.primary.main,
         marginLeft: "1%",
     },
+    wrapper: {
+        margin: theme.spacing(1),
+        width: "auto",
+        [theme.breakpoints.up("xs")]: {
+            width: "95%",
+            marginLeft: "auto",
+            marginRight: "auto",
+            marginTop: theme.spacing(4),
+            marginBottom: theme.spacing(4),
+        },
+        [theme.breakpoints.up("sm")]: {
+            marginTop: theme.spacing(6),
+            marginBottom: theme.spacing(6),
+            width: "90%",
+            marginLeft: "auto",
+            marginRight: "auto",
+        },
+        [theme.breakpoints.up("md")]: {
+            marginTop: theme.spacing(6),
+            marginBottom: theme.spacing(6),
+            width: "82.5%",
+            marginLeft: "auto",
+            marginRight: "auto",
+        },
+        [theme.breakpoints.up("lg")]: {
+            marginTop: theme.spacing(6),
+            marginBottom: theme.spacing(6),
+            width: "70%",
+            marginLeft: "auto",
+            marginRight: "auto",
+        },
+    },
 });
 
 function EditResume(props) {
@@ -54,7 +86,7 @@ function EditResume(props) {
     const [phone, setPhone] = React.useState('');
     const [email, setEmail] = React.useState('');
     const [address, setAddress] = React.useState('');
-    const [portfolioLink, setPortfolioLink] = React.useState('');
+    const [portofolioLink, setPortofolioLink] = React.useState('');
     const [skills, setSkills] = React.useState([]);
     const [newSkill, setNewSkill] = React.useState('');
     const [jobs, setJobs] = React.useState([
@@ -65,7 +97,7 @@ function EditResume(props) {
     ]);
 
     return (
-        <Box>
+        <Box className={classes.wrapper}>
             <Typography className={classes.sectionTitle}>Basic Info</Typography>
             <BasicInfo
                 pushMessageToSnackbar={pushMessageToSnackbar}
@@ -77,8 +109,8 @@ function EditResume(props) {
                 setEmail={setEmail}
                 address={address}
                 setAddress={setAddress}
-                portfolioLink={portfolioLink}
-                setPortfolioLink={setPortfolioLink}
+                portofolioLink={portofolioLink}
+                setPortofolioLink={setPortofolioLink}
             />
             <Divider className={classes.divider} />
             <Typography className={classes.sectionTitle}>Skills</Typography>

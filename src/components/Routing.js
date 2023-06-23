@@ -5,7 +5,9 @@ import withStyles from '@mui/styles/withStyles';
 import PropsRoute from "./PropsRoute";
 import useLocationBlocker from "../functions/useLocationBlocker";
 import UploadResume from "./resume/UploadResume";
-import EditResume from "./resume/EditResume";
+import EditResume from "./resume/edit/EditResume";
+import TailorResume from "./resume/tailor/TailorResume";
+import PreviewResume from "./resume/preview/PreviewResume";
 import EditJobDescription from "./job_description/EditJobDescription";
 
 const styles = (theme) => ({
@@ -45,12 +47,11 @@ const styles = (theme) => ({
 
 function Routing(props) {
   const {
-    classes,
     pushMessageToSnackbar
   } = props;
   useLocationBlocker();
   return (
-    <div className={classes.wrapper}>
+    <div>
       <Switch>
         <PropsRoute
           path="/ux-app/upload-resume"
@@ -65,6 +66,16 @@ function Routing(props) {
         <PropsRoute
           path="/ux-app/job-description"
           component={EditJobDescription}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+        />
+        <PropsRoute
+          path="/ux-app/tailor"
+          component={TailorResume}
+          pushMessageToSnackbar={pushMessageToSnackbar}
+        />
+        <PropsRoute
+          path="/ux-app/preview"
+          component={PreviewResume}
           pushMessageToSnackbar={pushMessageToSnackbar}
         />
       </Switch>

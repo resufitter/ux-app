@@ -34,8 +34,12 @@ const steps = [
     link: "/ux-app/job-description"
   },
   {
+    name: 'Tailor Resume',
+    link: "/ux-app/tailor"
+  },
+  {
     name: 'Preview Final Resume',
-    link: "/ux-app/edit"
+    link: "/ux-app/preview"
   }
 ];
 
