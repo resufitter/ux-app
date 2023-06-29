@@ -183,7 +183,7 @@ function LinearProgressWithLabel(props) {
     return (
         <Box sx={{ display: 'flex', alignItems: 'center' }}>
             <Box sx={{ width: '100%', mr: 1 }}>
-                {props.isLoading ? (
+                {props.isloading ? (
                     <LinearProgress color="success" sx={{
                         height: 10,
                         borderRadius: 5,
@@ -194,7 +194,7 @@ function LinearProgressWithLabel(props) {
                     }} />)}
             </Box>
             <Box sx={{ minWidth: 35 }}>
-                <Typography variant="body2" color="text.secondary">{`${Math.round(
+                <Typography variant="h4" color="text.primary">{`${Math.round(
                     props.value,
                 )}/100`}</Typography>
             </Box>
@@ -211,7 +211,6 @@ function TailorResume(props) {
         instance,
         jobId,
         resumeId,
-        setResumeId,
     } = props;
 
     const [name, setName] = React.useState('');
@@ -312,7 +311,7 @@ function TailorResume(props) {
         let jobPromises = [];
         var suggestedJobExperiences = [];
         jobs.forEach(function (job) {
-            if (job.summary != '') {
+            if (job.summary !== '') {
                 console.log("Calculating relevence score for job: " + job.title);
                 pushMessageToSnackbar({
                     isErrorMessage: false,
@@ -335,7 +334,7 @@ function TailorResume(props) {
         let projectPromises = [];
         var suggestedProjectExperiences = [];
         projects.forEach(function (project) {
-            if (project.summary != '') {
+            if (project.summary !== '') {
                 console.log("Calculating relevence score for project: " + project.name);
                 pushMessageToSnackbar({
                     isErrorMessage: false,
@@ -700,7 +699,7 @@ function TailorResume(props) {
             <Divider orientation="vertical" variant="middle" flexItem className={classes.wrapper} />
             <Box width="34%">
 
-                <LinearProgressWithLabel value={score} isLoading={isLoading} />
+                <LinearProgressWithLabel value={score} isloading={isLoading} />
 
                 <Chip
                     label={scoreMessage}

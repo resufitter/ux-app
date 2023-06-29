@@ -92,6 +92,7 @@ function NavBar(props) {
     classes,
     theme,
     handleNext,
+    handleBack,
     handleRestart,
     activeStep,
     steps,
@@ -149,7 +150,16 @@ function NavBar(props) {
             </React.Fragment>
           ) : (
             <React.Fragment>
-
+              <Button
+                color="secondary"
+                variant="contained"
+                disabled={activeStep === 0}
+                onClick={handleBack}
+                size="large"
+                sx={{ mr: 1 }}
+              >
+                Back
+              </Button>
               <Box sx={{ flex: '1 1 auto' }} />
               <Button
                 onClick={handleNext}
