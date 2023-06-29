@@ -32,7 +32,7 @@ function ProjectExperienceSection(props) {
     };
 
     const handleAddProject = () => {
-        setProjects([...projects, { name: '', location: '', summary: '' }]);
+        setProjects([...projects, { name: '', summary: '' }]);
     };
 
     const handleDeleteProject = (index) => {
@@ -53,13 +53,6 @@ function ProjectExperienceSection(props) {
                         label="Project Name"
                         value={project.name}
                         onChange={(e) => handleProjectFieldChange(index, 'name', e.target.value)}
-                        variant="outlined"
-                        className={classes.textField}
-                    />
-                    <TextField
-                        label="Location"
-                        value={project.location}
-                        onChange={(e) => handleProjectFieldChange(index, 'location', e.target.value)}
                         variant="outlined"
                         className={classes.textField}
                     />

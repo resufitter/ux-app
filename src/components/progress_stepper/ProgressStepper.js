@@ -6,7 +6,6 @@ import {
   Stepper,
   Step,
   Box,
-  Button
 } from "@mui/material";
 import withStyles from "@mui/styles/withStyles";
 
@@ -48,8 +47,6 @@ const styles = (theme) => ({
 function ProgressStepper(props) {
   const {
     classes,
-    handleNext,
-    handleBack,
     activeStep,
     steps,
     children,
@@ -88,24 +85,9 @@ function ProgressStepper(props) {
             width="100%"
             className={classes.wrapper}
           >
-            <Typography color="textPrimary">Step {activeStep + 1}</Typography>
           </Box>
 
           {children}
-          <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
-            <Button
-              color="inherit"
-              disabled={activeStep === 0}
-              onClick={handleBack}
-              sx={{ mr: 1 }}
-            >
-              Back
-            </Button>
-            <Box sx={{ flex: '1 1 auto' }} />
-            <Button onClick={handleNext}>
-              {activeStep === steps.length - 1 ? 'Download' : 'Next'}
-            </Button>
-          </Box>
         </React.Fragment>
       )}
     </Box>

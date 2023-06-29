@@ -9,6 +9,7 @@ import EditResume from "./resume/edit/EditResume";
 import TailorResume from "./resume/tailor/TailorResume";
 import PreviewResume from "./resume/preview/PreviewResume";
 import EditJobDescription from "./job_description/EditJobDescription";
+import Loading from "./Loading";
 
 const styles = (theme) => ({
   wrapper: {
@@ -47,7 +48,17 @@ const styles = (theme) => ({
 
 function Routing(props) {
   const {
-    pushMessageToSnackbar
+    pushMessageToSnackbar,
+    file,
+    setFile,
+    resume,
+    setResume,
+    jobDescription,
+    setJobDescription,
+    instance,
+    jobId,
+    resumeId,
+    setResumeId,
   } = props;
   useLocationBlocker();
   return (
@@ -57,26 +68,42 @@ function Routing(props) {
           path="/ux-app/upload-resume"
           component={UploadResume}
           pushMessageToSnackbar={pushMessageToSnackbar}
+          file={file}
+          setFile={setFile}
         />
         <PropsRoute
           path="/ux-app/edit"
           component={EditResume}
           pushMessageToSnackbar={pushMessageToSnackbar}
+          resume={resume}
+          setResume={setResume}
         />
         <PropsRoute
           path="/ux-app/job-description"
           component={EditJobDescription}
           pushMessageToSnackbar={pushMessageToSnackbar}
+          jobDescription={jobDescription}
+          setJobDescription={setJobDescription}
         />
         <PropsRoute
           path="/ux-app/tailor"
           component={TailorResume}
           pushMessageToSnackbar={pushMessageToSnackbar}
+          resume={resume}
+          setResume={setResume}
+          instance={instance}
+          jobId={jobId}
+          resumeId={resumeId}
+          setResumeId={setResumeId}
         />
         <PropsRoute
           path="/ux-app/preview"
           component={PreviewResume}
           pushMessageToSnackbar={pushMessageToSnackbar}
+        />
+        <PropsRoute
+          path="/ux-app/loading"
+          component={Loading}
         />
       </Switch>
     </div>
@@ -86,6 +113,16 @@ function Routing(props) {
 Routing.propTypes = {
   classes: PropTypes.object.isRequired,
   pushMessageToSnackbar: PropTypes.func,
+  file: PropTypes.object,
+  setFile: PropTypes.func,
+  resume: PropTypes.object,
+  setResume: PropTypes.func.isRequired,
+  jobDescription: PropTypes.string,
+  setJobDescription: PropTypes.func,
+  instance: PropTypes.func,
+  jobId: PropTypes.string,
+  resumeId: PropTypes.string,
+  setResumeId: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(memo(Routing));

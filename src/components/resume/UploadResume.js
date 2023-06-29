@@ -1,4 +1,4 @@
-import React, { useCallback, useState, Fragment } from "react";
+import React, { useCallback, Fragment } from "react";
 import PropTypes from "prop-types";
 import {
     Typography,
@@ -138,10 +138,12 @@ function UploadResume(props) {
         pushMessageToSnackbar,
         classes,
         style,
-        theme
+        theme,
+        file,
+        setFile
     } = props;
 
-    const [file, setFile] = useState(null);
+
 
     const onDrop = useCallback(
         (acceptedFiles, rejectedFiles) => {
@@ -241,6 +243,8 @@ UploadResume.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     style: PropTypes.object,
+    file: PropTypes.object,
+    setFile: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(UploadResume);

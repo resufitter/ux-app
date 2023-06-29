@@ -45,9 +45,10 @@ const styles = (theme) => ({
 function EditJobDescription(props) {
     const {
         classes,
+        jobDescription,
+        setJobDescription
     } = props;
 
-    const [jobDescription, setJobDescription] = React.useState('');
 
     return (
         <Box component="form" className={classes.wrapper}
@@ -72,6 +73,8 @@ EditJobDescription.propTypes = {
     classes: PropTypes.object.isRequired,
     theme: PropTypes.object.isRequired,
     style: PropTypes.object,
+    jobDescription: PropTypes.string,
+    setJobDescription: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(EditJobDescription);

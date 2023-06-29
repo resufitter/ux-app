@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, Typography } from "@mui/material";
 import { Add } from '@mui/icons-material';
 import PropTypes from "prop-types";
 import withStyles from "@mui/styles/withStyles";
@@ -17,20 +17,22 @@ const styles = (theme) => ({
         margin: "1%",
         marginBottom: '10px'
     },
+    score: {
+        fontFamily: 'Roboto',
+        fontWeight: 500,
+        fontSize: 20,
+        color: theme.palette.primary.main,
+        marginLeft: "1%",
+    },
 });
 
 function WorkExperienceSection(props) {
     const {
         classes,
         jobs,
-        setJobs
+        setJobs,
+        handleJobFieldChange
     } = props;
-
-    const handleJobFieldChange = (index, field, value) => {
-        const updatedJobs = [...jobs];
-        updatedJobs[index][field] = value;
-        setJobs(updatedJobs);
-    };
 
     const handleAddJob = () => {
         setJobs([...jobs, { title: '', company: '', location: '', duration: '', summary: '' }]);
@@ -96,6 +98,10 @@ function WorkExperienceSection(props) {
                             Delete Job
                         </Button>
                     )}
+                    {job.score && (
+                        <Typography className={classes.score}>{job.score.toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 })}</Typography>
+
+                    )}
                 </Box>
             ))}
             <Button
@@ -119,6 +125,7 @@ WorkExperienceSection.propTypes = {
     style: PropTypes.object,
     jobs: PropTypes.arrayOf(PropTypes.object),
     setJobs: PropTypes.func,
+    handleJobFieldChange: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(WorkExperienceSection);

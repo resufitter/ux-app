@@ -1,5 +1,5 @@
 import React from 'react';
-import { TextField, Button, Box } from "@mui/material";
+import { TextField, Button, Box, Typography } from "@mui/material";
 import { Add } from '@mui/icons-material';
 import PropTypes from "prop-types";
 import withStyles from "@mui/styles/withStyles";
@@ -16,6 +16,13 @@ const styles = (theme) => ({
     addButton: {
         margin: "1%",
     },
+    score: {
+        fontFamily: 'Roboto',
+        fontWeight: 500,
+        fontSize: 20,
+        color: theme.palette.primary.main,
+        marginLeft: "1%",
+    },
 });
 
 function ProjectExperienceSection(props) {
@@ -23,16 +30,11 @@ function ProjectExperienceSection(props) {
         classes,
         projects,
         setProjects,
+        handleProjectFieldChange
     } = props;
 
-    const handleProjectFieldChange = (index, field, value) => {
-        const updatedProjects = [...projects];
-        updatedProjects[index][field] = value;
-        setProjects(updatedProjects);
-    };
-
     const handleAddProject = () => {
-        setProjects([...projects, { name: '', location: '', summary: '' }]);
+        setProjects([...projects, { name: '', summary: '' }]);
     };
 
     const handleDeleteProject = (index) => {
@@ -57,13 +59,6 @@ function ProjectExperienceSection(props) {
                         className={classes.textField}
                     />
                     <TextField
-                        label="Location"
-                        value={project.location}
-                        onChange={(e) => handleProjectFieldChange(index, 'location', e.target.value)}
-                        variant="outlined"
-                        className={classes.textField}
-                    />
-                    <TextField
                         label="Summary"
                         value={project.summary}
                         onChange={(e) => handleProjectFieldChange(index, 'summary', e.target.value)}
@@ -80,6 +75,10 @@ function ProjectExperienceSection(props) {
                         >
                             Delete Project
                         </Button>
+                    )}
+                    {project.score && (
+                        <Typography className={classes.score}>{project.score.toLocaleString(undefined, { style: 'percent', minimumFractionDigits: 2 })}</Typography>
+
                     )}
                 </Box>
             ))}
@@ -103,6 +102,7 @@ ProjectExperienceSection.propTypes = {
     style: PropTypes.object,
     projects: PropTypes.arrayOf(PropTypes.object),
     setProjects: PropTypes.func,
+    handleProjectFieldChange: PropTypes.func,
 };
 
 export default withStyles(styles, { withTheme: true })(ProjectExperienceSection);

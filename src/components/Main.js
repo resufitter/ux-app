@@ -7,6 +7,7 @@ import Routing from "./Routing";
 import NavBar from "./navigation/NavBar";
 import ConsecutiveSnackbarMessages from "./ConsecutiveSnackbarMessages";
 import ProgressStepper from "./progress_stepper/ProgressStepper";
+import axios from "axios";
 
 const styles = (theme) => ({
   main: {
@@ -43,18 +44,101 @@ const steps = [
   }
 ];
 
+const instance = axios.create({
+  baseURL: "http://localhost:8000"
+});
+
 function Main(props) {
   const { classes } = props;
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const [pushMessageToSnackbar, setPushMessageToSnackbar] = useState(null);
   const history = useHistory();
+  const [file, setFile] = useState(null);
+  const [resumeId, setResumeId] = useState("");
+  const [jobId, setJobId] = useState("");
+  const [jobDescription, setJobDescription] = React.useState('');
+  const [resume, setResume] = useState(null);
+
 
   const handleNext = () => {
+    if (activeStep === 0) {
+      if (file === null) {
+        pushMessageToSnackbar({
+          isErrorMessage: true,
+          text: "Please Upload Your Resume",
+        });
+        return;
+      }
+    }
     const newActiveStep = activeStep + 1;
     setActiveStep(newActiveStep);
-    if (newActiveStep === steps.length)
+    history.push("/ux-app/loading");
+    if (newActiveStep === 1) {
+      const headers = {
+        "Content-Type": "multipart/form-data",
+        "Access-Control-Allow-Origin": "*",
+      };
+      let formData = new FormData();
+      formData.append("file", file);
+      instance.post('/v0/upload/resume', formData, { headers })
+        .then(response => {
+          console.log(JSON.stringify(response.data));
+          pushMessageToSnackbar({
+            isErrorMessage: false,
+            text: "Resume Parsed",
+          });
+          setResume(response.data.resume);
+          setResumeId(response.data.resume_id);
+          history.push(steps[newActiveStep].link);
+        });
+    }
+    else if (newActiveStep === 2) {
+      let resumeString = JSON.stringify(resume);
+      let headers = {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      };
+      let body = {
+        resumeId: resumeId,
+        resumeString: resumeString
+      };
+
+
+      instance.post('/v0/update/resume', body, { headers })
+        .then(response => {
+          pushMessageToSnackbar({
+            isErrorMessage: false,
+            text: "Resume Updated",
+          });
+          console.log(response.data);
+          history.push(steps[newActiveStep].link);
+        });
+    }
+    else if (newActiveStep === 3) {
+      let config = {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        }
+      };
+      let body = {
+        "jobDescription": jobDescription
+      }
+
+      instance.post('/v0/upload/job', body, config)
+        .then(response => {
+          pushMessageToSnackbar({
+            isErrorMessage: false,
+            text: "Job Description Uploaded",
+          });
+          setJobId(response.data);
+          history.push(steps[newActiveStep].link);
+        });
+    }
+    else if (newActiveStep === steps.length)
       return;
-    history.push(steps[newActiveStep].link);
+    else
+      history.push(steps[newActiveStep].link);
   };
 
   const handleBack = () => {
@@ -74,7 +158,6 @@ function Main(props) {
     },
     [setPushMessageToSnackbar]
   );
-
 
   useEffect(() => {
     // fetchRandomTargets();
@@ -107,6 +190,16 @@ function Main(props) {
         >
           <Routing
             pushMessageToSnackbar={pushMessageToSnackbar}
+            file={file}
+            setFile={setFile}
+            resume={resume}
+            setResume={setResume}
+            jobDescription={jobDescription}
+            setJobDescription={setJobDescription}
+            instance={instance}
+            jobId={jobId}
+            resumeId={resumeId}
+            setResumeId={setResumeId}
           />
         </ProgressStepper>
       </main>
